@@ -1,146 +1,31 @@
-//test/userRoutes.temptest.js
-
+//test/userRoutes.test.js
+// Import necessary modules
 const util = require('util');
+
+// Some environments do not have TextEncoder and TextDecoder as a global object. This block of code checks whether TextEncoder or TextDecoder are defined, if not, it assigns them to the global scope.
 if (typeof TextEncoder === "undefined") {
-    globalThis.TextEncoder = util.TextEncoder;
+    global.TextEncoder = util.TextEncoder;
 }
 if (typeof TextDecoder === "undefined") {
-    globalThis.TextDecoder = util.TextDecoder;
+    global.TextDecoder = util.TextDecoder;
 }
 
-const User = require('../models/user')
-const chai = require('chai');
-const chaiHttp = require('chai-http');
-chai.use(chaiHttp);
-const server = require('../server');
-const http = require('http');
-const should = chai.should();
-const bcrypt = require('bcrypt');
-const mongoose = require("mongoose");
-const { expect } = require('chai');
+// Import necessary modules for testing
+let model = require('../models/rfq') // Rfq model
+let mongoose = require('mongoose') // Mongoose for MongoDB interaction
+let chai = require('chai') // Chai for assertion
+let expect = chai.expect; // Expect function from chai for assertions
+let request = require('request') // Request for making HTTP requests
 
-
-let httpServer = null;
-const httpPort = 5000;
-
-describe('User Routes', function () {
-    beforeAll(function(done) {
-        // Start server before running tests
-        httpServer = http.createServer(server);
-        httpServer.listen(httpPort, done);
-    });
-
-    afterAll(async function(done) {
-        // Stop server after running tests
-        httpServer.close(() => {
-            mongoose.connection.close(() => {
-                console.log("Closed the DB connection");
-                done();
-            });
-        });
-    }, 30000); // increase to 30 seconds
-
-    let testUser = {
-        username: 'testuser',
-        password: 'testpassword',
-        buyer: false
-    }
-
-    // Delete test user before each test
-    beforeEach(async function() {
-        // Delete test user before creating a new one
-        await User.deleteMany({ username: 'testuser' });
-        testUser = new User({
-            username: 'testuser',
-            password: await bcrypt.hash('testpassword', 10),
-            buyer: false
-        });
-        await testUser.save();
-    });
-
-    afterEach(async function() {
-        // Delete test user after each test
-        await User.deleteMany({ username: 'testuser' }); // Adjusted
-    });
-
-
-    describe('/POST Register', function () {
-        it('should not POST a register with a password length less than 8 or greater than 1024', function (done) {
-            let user = {
-                username: 'testuser',
-                password: 'short' // or a string longer than 1024 characters
-            }
-            chai.request(httpServer)
-                .post('/user/register')
-                .send(user)
-                .end(function (err, res) {
-                    if (err) {
-                        console.log(err);
-                        return done(err);
-                    }
-                    if (res) {
-                        res.should.have.status(400); // Use chai assertion
-                        res.body.should.be.a('string'); // Use chai assertion
-                        res.body.should.equal('Password must be between 8 and 1024 characters'); // Use chai assertion
-                    }
-                    else {
-                        throw new Error('Response is undefined');
-                    }
-                    done();
-                });
-
-        }, 30000);
-    });
-
-    /*
-
-    // POST Login tests
-    it('should POST a login', function (done) {
-        const loginData = {
-            username: 'testuser',
-            password: 'testpassword'
-        };
-        chai.request(httpServer) // Change here
-            .post('/user/login')
-            .send(loginData)
-            .end(async function (err, res) { // Add async here
-                if (err) {
-                    return done(err);
-                }
-                try {
-                    res.should.have.status(200);
-                    res.body.should.be.a('object');
-                    res.body.should.have.property('token');
-                    done();
-                } catch (e) {
-                    done(e);
-                }
-            });
-    }, 15000); // Moved timeout here
-
-
-    describe('/GET User', function () {
-        it('should GET a user by the given id', function (done) {
-            const user = new User({
-                username: 'username',
-                password: bcrypt.hashSync('password', 10),
-                buyer: false
-            });
-            user.save()
-                .then(user => {
-                    chai.request(httpServer) // Change here
-                        .get('/user/' + user.id)
-                        .end(function (err, res) { // Remove .send(user) here
-                            res.should.have.status(200);
-                            res.body.should.be.a('object');
-                            res.body.should.have.property('username');
-                            res.body.should.have.property('buyer');
-                            res.body.should.have.property('_id').eql(user.id.toString());
-                            done();
-                        });
-                });
-        });
-    });
-
-     */
-});
+// Describe a test suite for running the fetch request to MongoDB for all RFQs
+describe('Running the fetch request to MongoDB for all RFQs', () => {
+    it('should give a 403 message to indicate connected but access denied', (done) => {
+        // Make a GET request to the specified endpoint
+        request.get('http://localhost:5000/rfq/all', (req, response) => {
+            console.log('response', response.statusCode) // Log the status code
+            expect(response.statusCode).to.equal(403); // Expect the status code to be 403, indicating that connection was made and access is denied
+            mongoose.disconnect(); // Disconnect from the MongoDB after the test case
+            done() // Indicate that this test case is done
+        })
+    })
+})

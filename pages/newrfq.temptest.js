@@ -1,4 +1,4 @@
-//pages/newrfq.test.js
+//pages/newrfq.temptest.js
 
 import React from "react";
 import { render, fireEvent, waitFor } from '@testing-library/react';

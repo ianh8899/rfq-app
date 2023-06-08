@@ -72,7 +72,7 @@ This app will be much simpler to use at the expense of some functionality. A bet
 ### Installation
 To install and run the app on your local machine, follow these steps:
 
-1) Clone the repository to your local machine using command "git clone [placeholder URL]"
+1) Clone the repository to your local machine using command "git clone https://github.com/ianh8899/rfq-app"
 2) Change into the project directory using command: "cd rfq-app"
 3) Create a .env file in the root directory and add your MongoDB URI (MONGODB_URI="your-MongoDB-URI-goes here") and JWT token (TOKEN_SECRET="your-jwt-secret-token-goes-here").
 4) Start the application using command: "npm start"
