@@ -2,11 +2,11 @@
 ### System Architecture
 The application will follow a 3-tier architecture:
 
-1) Front-End (Presentation Layer): This layer will be responsible for presenting the data to the user and receiving user input. 
-It will be built using React.js.
+1) Front-End (Presentation Layer): This layer will be responsible for presenting the data to the user and receiving user input.
+   It will be built using React.js.
 
 2) Back-End (Application Logic Layer): This layer will handle data processing, user authentication, and business logic. 4
-It will be built using Express.js and Node.js.
+   It will be built using Express.js and Node.js.
 
 3) Database (Data Layer): This layer will store and retrieve application data. MongoDB will be used for this purpose.
 
@@ -28,17 +28,17 @@ The MERN stack provides several benefits:
 The application can be deployed using platforms like Heroku or AWS. MongoDB Atlas can be used to host the MongoDB database.
 
 ### Use of Next.js
-Next.js simplifies the setup of a modern web application by providing a comprehensive solution for server-rendered React applications. 
-It offers functionalities like server-side rendering and static site generation out of the box, which can lead to better performance and improved SEO. 
+Next.js simplifies the setup of a modern web application by providing a comprehensive solution for server-rendered React applications.
+It offers functionalities like server-side rendering and static site generation out of the box, which can lead to better performance and improved SEO.
 It also supports dynamic routing, which is beneficial for our RFQ application as we plan to have dynamic pages for each RFQ.
 
 ### Styling Tools
-We will use a combination of styled-components and Material-UI. 
+We will use a combination of styled-components and Material-UI.
 These libraries offer a collection of customizable components, support for responsive design, and have a large community.
 
 ### System Requirements Specification
-The RFQ application will allow buyers and suppliers to interact over procurement needs. 
-Buyers post RFQs, and suppliers can respond to them. 
+The RFQ application will allow buyers and suppliers to interact over procurement needs.
+Buyers post RFQs, and suppliers can respond to them.
 This platform provides a single point of communication, making procurement more efficient.
 
 ### User Stories
@@ -46,12 +46,12 @@ This platform provides a single point of communication, making procurement more 
 - Tom, a supplier specializing in organic farming, wants to view all open RFQs to understand the market's demand and identify the needs of Sally in a fast efficient way.
 - Vanessa, another supplier, who is a distributor of baking equipment, wishes to respond to RFQs and propose her products to potential clients.
 - Sally, a buyer, wants to view all responses to her RFQs in one place and choose the best supplier who can meet the demands of her bakery.
-- Tina, a sales representative wants to track when her responses are accepted so can quickly update her company about sales forecasts.  
+- Tina, a sales representative wants to track when her responses are accepted so can quickly update her company about sales forecasts.
 
 ### Competitor Analysis
-There are platforms like SAP Ariba, Zycus, and Coupa that offer similar services. 
+There are platforms like SAP Ariba, Zycus, and Coupa that offer similar services.
 However, those applications are enterprise platforms and thus complicated, expensive to license and resource intensive to maintain.
-This app will be much simpler to use at the expense of some functionality. A better fit for much smaller organisations. 
+This app will be much simpler to use at the expense of some functionality. A better fit for much smaller organisations.
 
 
 ### Functional Requirements
@@ -120,3 +120,7 @@ This will start the backend server on port 5000 and the frontend React app on po
 8) If you have made a response already that hasn't been accepted and the RFQ is still open you can select the "Edit Response" button which will open up the same fields as when you created the response. Make the amendments in the fields and then select "Save" button to amend them or "Cancel" to cancel any changes.
 9) Click the "Go back" button to be returned back to the "Outstanding RFQs" tab.
 10) If you wish to Log out simply click "Log Out" in the header.
+
+### Deployment
+
+This app is deployed on Vercel since Vercel has been a leader and GitHub recommendation for Next.js apps.
