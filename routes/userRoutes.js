@@ -62,16 +62,24 @@ router.post("/login", async (req, res) => {
 
     // If the password matches, create a new JWT token and include the user's ID and buyer status in the payload
     const token = jwt.sign(
-      { _id: user._id, buyer: user.buyer },
-      process.env.TOKEN_SECRET
+        { _id: user._id, buyer: user.buyer },
+        process.env.TOKEN_SECRET
     );
+
+    // Set the token in an HTTP-only cookie
+    res.cookie("token", token, {
+      httpOnly: true, // Prevents the token from being accessed by JavaScript
+    });
+
     // Respond with the token
-    res.header("token", token).status(200).json({ token });
+    res.status(200).json({ token });
+
   } catch (error) {
     // If an error occurs, respond with the error
     res.status(500).json(error);
   }
 });
+
 
 // Route to get a user by their ID
 router.get("/:userId", async (req, res) => {
@@ -89,6 +97,13 @@ router.get("/:userId", async (req, res) => {
     // If an error occurs, respond with the error
     res.status(500).json(error);
   }
+});
+
+// Route to log out a user
+router.post("/logout", (req, res) => {
+  res.clearCookie("token"); // This will clear the cookie named 'token'
+  res.clearCookie('userId'); // This will clear the cookie named 'userId
+  res.status(200).send("Logged out successfully");
 });
 
 // Export the router so it can be used in other parts of the application

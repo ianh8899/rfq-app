@@ -3,6 +3,7 @@ import { useRouter } from "next/router"; // Used for handling routing within the
 import React, { useEffect, useState } from "react"; // React library // React hooks
 import axios from "axios"; // Module for making HTTP requests
 import Link from "next/link";
+import {parseCookies} from "nookies";
 
 const RfqDetails = () => {
   // Initialize state variables
@@ -21,8 +22,8 @@ const RfqDetails = () => {
 
   // function to fetch the RFQ and the associated responses
   const fetchRfqAndResponse = async () => {
-    const token = localStorage.getItem("token"); // get token from local storage
-    const userId = localStorage.getItem("userId"); // get user id from local storage
+    const token = parseCookies().token; // Read the cookies
+    const userId = parseCookies().userId // Read the cookies for ID
 
     if (!token || !userId) {
       console.error("Token or user ID is missing"); //error message if details cannot be retrieved from localStorage
@@ -87,9 +88,8 @@ const RfqDetails = () => {
       return;
     }
 
-    // Fetch the token and user ID from localStorage
-    const token = localStorage.getItem("token");
-    const userId = localStorage.getItem("userId");
+    const token = parseCookies().token; // Read the cookies
+    const userId = parseCookies().userID; // Read the cookies for ID
 
     // Create an object to represent the updated response
     const updatedResponse = {
@@ -134,7 +134,7 @@ const RfqDetails = () => {
 
   // function to delete the response
   const deleteResponse = async () => {
-    const token = localStorage.getItem("token"); // get token from local storage
+    const token = parseCookies().token; // Read the cookies
     if (!token) {
       console.error("Token is missing"); // error message if token cannot be retrieved from localStorage
       return;
@@ -542,7 +542,7 @@ const RfqDetails = () => {
             <div>
               {rfq.status && (
                 <button
-                  disabled={rfq.status === "closed"}
+                  disabled={rfq.status === "Closed"}
                   onClick={submitResponse}
                 >
                   Submit Response

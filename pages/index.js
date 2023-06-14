@@ -4,7 +4,8 @@ import React, { useState } from "react"; // React library // React hooks
 import axios from "axios"; // Module for making HTTP requests
 import jwt_decode from "jwt-decode"; // import jwt-decode
 import { useAuthContext } from "../contexts/AuthContext"; // Used for getting the current user data from AuthContext
-import { useRouter } from "next/router"; // Used for handling routing within the app
+import { useRouter } from "next/router";
+import { setCookie } from "nookies"; // Used for handling routing within the app
 
 const Index = () => {
   // Using useState hook for form fields and response message
@@ -26,8 +27,8 @@ const Index = () => {
         password,
       });
       const decodedToken = jwt_decode(res.data.token); // Decode the token
-      localStorage.setItem("token", res.data.token); // Save the token in localStorage
-      localStorage.setItem("userId", decodedToken._id); // Store user id in local storage
+      setCookie(null, 'token', res.data.token, { path: '/' }) // Set the token cookie
+      setCookie(null, 'userId', decodedToken._id, { path: '/' }) // Set the userId cookie
       setUser(decodedToken); // Update the user status globally using decoded token
       setMessage("Logged in successfully");
       router.push("/home"); // Navigate to the welcome page

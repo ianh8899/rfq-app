@@ -1,6 +1,7 @@
 //pages/rfsforresponse.js
 import React, { useEffect, useState } from "react"; // React library // React hooks
 import axios from "axios"; // Module for making HTTP requests
+import { parseCookies } from 'nookies' // import parseCookies function from nookies
 
 function SupplierRFQs() {
   // Use the useState hook to create a state variable for RFQs
@@ -8,7 +9,7 @@ function SupplierRFQs() {
 
   useEffect(() => {
     async function fetchRFQs() {
-      const token = localStorage.getItem("token");
+      const { token, userId } = parseCookies() // Read the cookies
 
       try {
         // Make a GET request to fetch all RFQs
@@ -41,7 +42,7 @@ function SupplierRFQs() {
 
           // Find the response by the current user
           const supplierResponse = responseRes.data.find(
-            (response) => response.createdBy === localStorage.getItem("userId")
+            (response) => response.createdBy === userId
           );
           if (supplierResponse) {
             fetchedRfqs[i].responseStatus = supplierResponse.status;

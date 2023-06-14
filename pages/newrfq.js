@@ -1,7 +1,8 @@
 //pages/newrfq.js
 
 import React, { useState } from "react"; // React library // React hooks
-import axios from "axios"; // Module for making HTTP requests
+import axios from "axios";
+import { parseCookies } from "nookies"; // Module for making HTTP requests
 
 const NewRFQ = () => {
   // Using useState hook to create state variables for each field in the RFQ form and the response message
@@ -23,8 +24,7 @@ const NewRFQ = () => {
         annualVolume,
         contractLength,
       };
-      // Get the token from localStorage
-      const token = localStorage.getItem("token");
+      const token = parseCookies().token; // Read the cookies
       // Send a POST request to the server with the RFQ object and the token in the header
       const res = await axios.post("http://localhost:5000/rfq", rfq, {
         headers: { Authorization: `Bearer ${token}` },

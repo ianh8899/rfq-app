@@ -3,7 +3,8 @@
 import React from "react"; // React library
 import { useEffect, useState } from "react"; // React hooks
 import axios from "axios"; // Module for making HTTP requests
-import { useRouter } from "next/router"; // Used for handling routing within the app
+import { useRouter } from "next/router";
+import { parseCookies } from "nookies"; // Used for handling routing within the app
 
 const OutstandingRFQs = () => {
   // Create state variables for rfqs and a router instance
@@ -13,7 +14,7 @@ const OutstandingRFQs = () => {
   // useEffect hook to fetch outstanding RFQs from the server
   useEffect(() => {
     // Retrieve the token from local storage
-    const token = localStorage.getItem("token");
+    const { token } = parseCookies() // Read the cookies
 
     // Send a GET request to the server to retrieve RFQs, the token is included in the header
     axios

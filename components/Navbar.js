@@ -3,7 +3,8 @@ import Link from "next/link";
 import { useAuthContext } from "../contexts/AuthContext"; // Used for getting the current user data from AuthContext
 import { useRouter } from "next/router"; // Used for handling routing within the app
 import React from "react"; // React library
-import Head from "next/head"; // Used to update the head section of the web page
+import Head from "next/head";
+import axios from "axios"; // Used to update the head section of the web page
 
 // Navbar functional component definition
 const Navbar = () => {
@@ -12,12 +13,19 @@ const Navbar = () => {
   const router = useRouter(); // Creating a router instance
 
   // Function to handle logout operation
+  // Function to handle logout operation
   const handleLogout = () => {
-    // Removing the authentication token and user ID from localStorage
-    localStorage.removeItem("token");
-    localStorage.removeItem("userId");
-    setUser(null); // Setting the user state to null (logged out)
-    router.push("/"); // Redirecting the user to the root route ('/')
+    // Send a request to the server-side logout route
+      axios.post("http://localhost:5000/user/logout", {}, { withCredentials: true })
+          .then((response) => {
+          // Clear the user data from the React state
+          setUser(null);
+          // Redirect the user to the root route ('/')
+          router.push("/");
+        })
+        .catch((error) => {
+          console.error("Logout failed: ", error);
+        });
   };
 
   // Function to apply different styles to the navigation link based on the current path

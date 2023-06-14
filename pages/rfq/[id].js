@@ -3,6 +3,7 @@ import { useRouter } from "next/router"; // Used for handling routing within the
 import React, { useEffect, useState } from "react"; // React library // React hooks
 import axios from "axios"; // Module for making HTTP requests
 import Link from "next/link";
+import { parseCookies } from "nookies";
 
 const RfqDetails = () => {
   // Initialize state variables
@@ -15,7 +16,7 @@ const RfqDetails = () => {
 
   // function to fetch the RFQ and the associated responses
   const fetchRfqAndResponses = async () => {
-    const token = localStorage.getItem("token"); // get token from local storage
+    const token = parseCookies().token; // Read the cookies
 
     //fetch the RFQ
     const rfqResponse = await axios.get(`http://localhost:5000/rfq/${id}`, {
@@ -78,7 +79,7 @@ const RfqDetails = () => {
   // Async function to submit changes to the RFQ
   // Sends a PUT request to update the RFQ data, then turns off edit mode and refreshes the data
   const submitChanges = async () => {
-    const token = localStorage.getItem("token");
+    const token = parseCookies().token; // Read the cookies
     await axios.put(`http://localhost:5000/rfq/${id}`, rfqUpdates, {
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -94,7 +95,7 @@ const RfqDetails = () => {
       ];
 
     // Send PUT request to update response status
-    const token = localStorage.getItem("token");
+    const token = parseCookies().token; // Read the cookies
     await axios.put(
       `http://localhost:5000/response/${responseId}`,
       { status: nextStatus },
@@ -111,7 +112,7 @@ const RfqDetails = () => {
   }
   // Async function to delete the RFQ
   const deleteRfq = async () => {
-    const token = localStorage.getItem("token");
+    const token = parseCookies().token; // Read the cookies
     await axios.delete(`http://localhost:5000/rfq/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
