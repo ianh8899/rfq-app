@@ -387,7 +387,9 @@ const RfqDetails = () => {
           <button className="edit-button" onClick={toggleEditMode}>
             Edit RFQ
           </button>
-          <button className="delete-button" onClick={deleteRfq}>Delete RFQ</button>
+          <button className="delete-button" onClick={deleteRfq}>
+            Delete RFQ
+          </button>
         </>
       )}
 

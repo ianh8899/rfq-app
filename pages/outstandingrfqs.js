@@ -14,7 +14,7 @@ const OutstandingRFQs = () => {
   // useEffect hook to fetch outstanding RFQs from the server
   useEffect(() => {
     // Retrieve the token from local storage
-    const { token } = parseCookies() // Read the cookies
+    const { token } = parseCookies(); // Read the cookies
 
     // Send a GET request to the server to retrieve RFQs, the token is included in the header
     axios

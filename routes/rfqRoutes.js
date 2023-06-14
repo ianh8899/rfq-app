@@ -148,7 +148,9 @@ router.delete("/:id", async (req, res, next) => {
 
     // If the user is not the creator of the RFQ, deny access
     if (user._id.toString() !== rfq.createdBy.toString()) {
-      return res.status(403).json({ message: "Access denied, not the creator" });
+      return res
+        .status(403)
+        .json({ message: "Access denied, not the creator" });
     }
 
     // Delete the RFQ
@@ -160,7 +162,6 @@ router.delete("/:id", async (req, res, next) => {
     next(error);
   }
 });
-
 
 // Export the router
 module.exports = router;

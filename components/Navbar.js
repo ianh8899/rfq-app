@@ -16,16 +16,17 @@ const Navbar = () => {
   // Function to handle logout operation
   const handleLogout = () => {
     // Send a request to the server-side logout route
-      axios.post("http://localhost:5000/user/logout", {}, { withCredentials: true })
-          .then((response) => {
-          // Clear the user data from the React state
-          setUser(null);
-          // Redirect the user to the root route ('/')
-          router.push("/");
-        })
-        .catch((error) => {
-          console.error("Logout failed: ", error);
-        });
+    axios
+      .post("http://localhost:5000/user/logout", {}, { withCredentials: true })
+      .then((response) => {
+        // Clear the user data from the React state
+        setUser(null);
+        // Redirect the user to the root route ('/')
+        router.push("/");
+      })
+      .catch((error) => {
+        console.error("Logout failed: ", error);
+      });
   };
 
   // Function to apply different styles to the navigation link based on the current path

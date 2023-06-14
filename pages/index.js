@@ -27,8 +27,8 @@ const Index = () => {
         password,
       });
       const decodedToken = jwt_decode(res.data.token); // Decode the token
-      setCookie(null, 'token', res.data.token, { path: '/' }) // Set the token cookie
-      setCookie(null, 'userId', decodedToken._id, { path: '/' }) // Set the userId cookie
+      setCookie(null, "token", res.data.token, { path: "/" }); // Set the token cookie
+      setCookie(null, "userId", decodedToken._id, { path: "/" }); // Set the userId cookie
       setUser(decodedToken); // Update the user status globally using decoded token
       setMessage("Logged in successfully");
       router.push("/home"); // Navigate to the welcome page

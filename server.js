@@ -7,7 +7,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const http = require("http");
-const cookieParser = require('cookie-parser');
+const cookieParser = require("cookie-parser");
 
 // Import route handlers
 const userRoutes = require("./routes/userRoutes");
@@ -41,10 +41,12 @@ app.use(cookieParser());
 // Use body-parser middleware to parse request bodies
 app.use(express.json());
 // Use cors middleware to allow cross-origin requests and credentials (cookies)
-app.use(cors({
-  origin: 'http://localhost:3000',
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
 
 // Establish a second connection to the MongoDB database
 mongoose.connect(process.env.MONGODB_URI, {

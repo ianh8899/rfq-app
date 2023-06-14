@@ -54,50 +54,50 @@ const NewRFQ = () => {
         <div>
           <label htmlFor="rfqName">RFQ Name:</label>
           <input
-              id="rfqName"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
+            id="rfqName"
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
         <div>
           <label htmlFor="contractStartDate">Contract Start Date:</label>
           <input
-              id="contractStartDate"
-              type="date"
-              value={contractStartDate}
-              onChange={(e) => setContractStartDate(e.target.value)}
-              required
+            id="contractStartDate"
+            type="date"
+            value={contractStartDate}
+            onChange={(e) => setContractStartDate(e.target.value)}
+            required
           />
         </div>
         <div>
           <label htmlFor="about">About:</label>
           <textarea
-              id="about"
-              value={about}
-              onChange={(e) => setAbout(e.target.value)}
-              required
+            id="about"
+            value={about}
+            onChange={(e) => setAbout(e.target.value)}
+            required
           />
         </div>
         <div>
           <label htmlFor="annualVolume">Annual Volume:</label>
           <input
-              id="annualVolume"
-              type="number"
-              value={annualVolume}
-              onChange={(e) => setAnnualVolume(e.target.value)}
-              required
+            id="annualVolume"
+            type="number"
+            value={annualVolume}
+            onChange={(e) => setAnnualVolume(e.target.value)}
+            required
           />
         </div>
         <div>
           <label htmlFor="contractLength">Contract Length:</label>
           <input
-              id="contractLength"
-              type="number"
-              value={contractLength}
-              onChange={(e) => setContractLength(e.target.value)}
-              required
+            id="contractLength"
+            type="number"
+            value={contractLength}
+            onChange={(e) => setContractLength(e.target.value)}
+            required
           />
         </div>
         <button type="submit">Release RFQ</button>
@@ -107,46 +107,46 @@ const NewRFQ = () => {
       </form>
       <p>{message}</p>
       <style jsx>{`
-          label {
-            display: block;
-            margin-bottom: 5px;
-          }
-          input,
-          textarea,
-          button {
-            font-family: "Roboto", sans-serif;
-            border-radius: 5px;
-            border: none;
-            padding: 10px;
-            margin-bottom: 20px;
-          }
-          input,
-          textarea {
-            width: 100%;
-            background-color: #333;
-            color: #fff;
-          }
-          textarea {
-            height: 100px;
-          }
-          button {
-            color: #fff;
-            background-color: #007bff;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            font-size: 18px;
-            margin-right: 20px;
-          }
-          button:hover {
-            background-color: #0056b3;
-          }
-          button[type="button"] {
-            background-color: #333;
-          }
-          button[type="button"]:hover {
-            background-color: #1a1a1a;
-          }
-        `}</style>
+        label {
+          display: block;
+          margin-bottom: 5px;
+        }
+        input,
+        textarea,
+        button {
+          font-family: "Roboto", sans-serif;
+          border-radius: 5px;
+          border: none;
+          padding: 10px;
+          margin-bottom: 20px;
+        }
+        input,
+        textarea {
+          width: 100%;
+          background-color: #333;
+          color: #fff;
+        }
+        textarea {
+          height: 100px;
+        }
+        button {
+          color: #fff;
+          background-color: #007bff;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          font-size: 18px;
+          margin-right: 20px;
+        }
+        button:hover {
+          background-color: #0056b3;
+        }
+        button[type="button"] {
+          background-color: #333;
+        }
+        button[type="button"]:hover {
+          background-color: #1a1a1a;
+        }
+      `}</style>
     </div>
   );
 };

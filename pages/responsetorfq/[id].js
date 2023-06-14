@@ -3,7 +3,7 @@ import { useRouter } from "next/router"; // Used for handling routing within the
 import React, { useEffect, useState } from "react"; // React library // React hooks
 import axios from "axios"; // Module for making HTTP requests
 import Link from "next/link";
-import {parseCookies} from "nookies";
+import { parseCookies } from "nookies";
 
 const RfqDetails = () => {
   // Initialize state variables
@@ -23,7 +23,7 @@ const RfqDetails = () => {
   // function to fetch the RFQ and the associated responses
   const fetchRfqAndResponse = async () => {
     const token = parseCookies().token; // Read the cookies
-    const userId = parseCookies().userId // Read the cookies for ID
+    const userId = parseCookies().userId; // Read the cookies for ID
 
     if (!token || !userId) {
       console.error("Token or user ID is missing"); //error message if details cannot be retrieved from localStorage
@@ -165,7 +165,6 @@ const RfqDetails = () => {
     }
   };
 
-
   // If the RFQ data has not been fetched yet, show a loading message
   if (!rfq) {
     return <p>Loading...</p>;
@@ -283,7 +282,7 @@ const RfqDetails = () => {
           display: inline-block;
           margin: 0 auto;
         }
-        
+
         .delete-button {
           width: 170px;
           padding: 10px;
@@ -481,13 +480,13 @@ const RfqDetails = () => {
               </button>
             )}
             {response.status !== "Accepted" && rfq.status !== "Closed" && (
-                <button
-                    className="delete-button"
-                    disabled={rfq.status === "Closed"}
-                    onClick={deleteResponse}
-                >
-                  Delete Response
-                </button>
+              <button
+                className="delete-button"
+                disabled={rfq.status === "Closed"}
+                onClick={deleteResponse}
+              >
+                Delete Response
+              </button>
             )}
           </>
         )
