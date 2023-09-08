@@ -120,7 +120,3 @@ This will start the backend server on port 5000 and the frontend React app on po
 8) If you have made a response already that hasn't been accepted and the RFQ is still open you can select the "Edit Response" button which will open up the same fields as when you created the response. Make the amendments in the fields and then select "Save" button to amend them or "Cancel" to cancel any changes.
 9) Click the "Go back" button to be returned back to the "Outstanding RFQs" tab.
 10) If you wish to Log out simply click "Log Out" in the header.
-
-### Deployment
-
-This app is deployed on Vercel since Vercel has been a leader and GitHub recommendation for Next.js apps.
