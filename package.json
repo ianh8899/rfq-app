@@ -5,8 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "startfrontend": "next start",
-    "startbackend": "node server.js",
+    "start": "nodemon server.js",
     "lint": "next lint",
     "test": "cross-env NODE_ENV=test jest"
   },
