@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "prestart": "npm install",
     "dev": "next dev",
     "build": "next build",
-    "start": "concurrently \"next dev\" \"nodemon server.js\"",
+    "start": "concurrently \"next start\" \"nodemon server.js\"",
     "lint": "next lint",
     "test": "cross-env NODE_ENV=test jest"
   },
