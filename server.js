@@ -43,14 +43,13 @@ app.use(cookieParser());
 app.use(express.json());
 // Use cors middleware to allow cross-origin requests and credentials (cookies)
 const isProduction = process.env.NODE_ENV === 'production';
-const origin = isProduction ? 'https://rfq-app.vercel.app' : 'http://localhost:3000';
+const origin = isProduction ? 'https://rfq-app.onrender.com/' : 'http://localhost:3000';
 
-app.use(
-    cors({
-      origin: origin,
-      credentials: true,
-    })
-);
+app.use(cors({
+  origin: 'https://rfq-app.onrender.com',  // replace with your frontend domain
+  credentials: true  // if you're using cookies or auth headers
+}));
+
 
 
 // Establish a second connection to the MongoDB database

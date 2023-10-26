@@ -32,13 +32,13 @@ const RfqDetails = () => {
 
     try {
       //fetch the RFQ
-      const rfqResponse = await axios.get(`http://localhost:5000/rfq/${id}`, {
+      const rfqResponse = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/rfq/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
       // fetch the responses to the RFQ
       const responseResponse = await axios.get(
-        `http://localhost:5000/response/${id}`,
+        `${process.env.NEXT_PUBLIC_BACKEND_URL}/response/${id}`,
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
