@@ -17,7 +17,7 @@ const Navbar = () => {
   const handleLogout = () => {
     // Send a request to the server-side logout route
     axios
-      .post("http://localhost:5000/user/logout", {}, { withCredentials: true })
+      .post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/logout`, {}, { withCredentials: true })
       .then((response) => {
         // Clear the user data from the React state
         setUser(null);

@@ -108,12 +108,12 @@ const RfqDetails = () => {
       // If not, create a new response using a POST request.
       if (response) {
         await axios.put(
-          `http://localhost:5000/response/${response._id}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/response/${response._id}`,
           updatedResponse,
           { headers: { Authorization: `Bearer ${token}` } }
         );
       } else {
-        await axios.post(`http://localhost:5000/response`, updatedResponse, {
+        await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/response`, updatedResponse, {
           headers: { Authorization: `Bearer ${token}` },
         });
       }
@@ -147,7 +147,7 @@ const RfqDetails = () => {
 
     try {
       // make a DELETE request to the server
-      await axios.delete(`http://localhost:5000/response/${response._id}`, {
+      await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/response/${response._id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

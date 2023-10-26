@@ -29,7 +29,7 @@ export function AuthWrapper({ children, user }) {
         const decodedToken = jwt_decode(token);
         // Send a GET request to fetch the user data
         axios
-          .get(`http://localhost:5000/user/${decodedToken._id}`, {
+          .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/${decodedToken._id}`, {
             headers: { Authorization: `Bearer ${token}` },
           })
           .then((response) => {

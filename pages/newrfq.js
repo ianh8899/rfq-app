@@ -26,7 +26,7 @@ const NewRFQ = () => {
       };
       const token = parseCookies().token; // Read the cookies
       // Send a POST request to the server with the RFQ object and the token in the header
-      const res = await axios.post("http://localhost:5000/rfq", rfq, {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/rfq`, rfq, {
         headers: { Authorization: `Bearer ${token}` },
       });
       // If the request is successful, display a success message and clear the form

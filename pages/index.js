@@ -22,7 +22,7 @@ const Index = () => {
 
     try {
       // Send a post request to the server with the form data
-      const res = await axios.post("http://localhost:5000/user/login", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/login`, {
         username,
         password,
       });

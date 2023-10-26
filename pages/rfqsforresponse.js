@@ -13,7 +13,7 @@ function SupplierRFQs() {
 
       try {
         // Make a GET request to fetch all RFQs
-        const rfqRes = await axios.get("http://localhost:5000/rfq/all", {
+        const rfqRes = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/rfq/all`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -28,7 +28,7 @@ function SupplierRFQs() {
         // For each RFQ, fetch its responses
         for (let i = 0; i < fetchedRfqs.length; i++) {
           const responseRes = await axios.get(
-            "http://localhost:5000/response/" + fetchedRfqs[i]._id,
+            `${process.env.NEXT_PUBLIC_BACKEND_URL}/response/` + fetchedRfqs[i]._id,
             {
               headers: { Authorization: `Bearer ${token}` },
             }

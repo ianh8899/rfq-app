@@ -18,7 +18,7 @@ const OutstandingRFQs = () => {
 
     // Send a GET request to the server to retrieve RFQs, the token is included in the header
     axios
-      .get("http://localhost:5000/rfq", {
+      .get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/rfq`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setRfqs(res.data)) // Set the RFQs state with the data returned by the server

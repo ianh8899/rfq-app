@@ -14,7 +14,7 @@ const Register = () => {
 
     try {
       // Send POST request to server with entered username and password
-      const res = await axios.post("http://localhost:5000/user/register", {
+      const res = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_URL}/user/register`, {
         username,
         password,
       });

@@ -19,13 +19,13 @@ const RfqDetails = () => {
     const token = parseCookies().token; // Read the cookies
 
     //fetch the RFQ
-    const rfqResponse = await axios.get(`http://localhost:5000/rfq/${id}`, {
+    const rfqResponse = await axios.get(`${process.env.NEXT_PUBLIC_BACKEND_URL}/rfq/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
     // fetch the responses to the RFQ
     const responsesResponse = await axios.get(
-      `http://localhost:5000/response/${id}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/response/${id}`,
       { headers: { Authorization: `Bearer ${token}` } }
     );
 
@@ -33,7 +33,7 @@ const RfqDetails = () => {
     const responsesWithUsernames = await Promise.all(
       responsesResponse.data.map(async (response) => {
         const userResponse = await axios.get(
-          `http://localhost:5000/user/${response.createdBy}`,
+          `${process.env.NEXT_PUBLIC_BACKEND_URL}/user/${response.createdBy}`,
           { headers: { Authorization: `Bearer ${token}` } }
         );
         return {
@@ -80,7 +80,7 @@ const RfqDetails = () => {
   // Sends a PUT request to update the RFQ data, then turns off edit mode and refreshes the data
   const submitChanges = async () => {
     const token = parseCookies().token; // Read the cookies
-    await axios.put(`http://localhost:5000/rfq/${id}`, rfqUpdates, {
+    await axios.put(`${process.env.NEXT_PUBLIC_BACKEND_URL}/rfq/${id}`, rfqUpdates, {
       headers: { Authorization: `Bearer ${token}` },
     });
     setEditMode(false);
@@ -97,7 +97,7 @@ const RfqDetails = () => {
     // Send PUT request to update response status
     const token = parseCookies().token; // Read the cookies
     await axios.put(
-      `http://localhost:5000/response/${responseId}`,
+      `${process.env.NEXT_PUBLIC_BACKEND_URL}/response/${responseId}`,
       { status: nextStatus },
       { headers: { Authorization: `Bearer ${token}` } }
     );
@@ -113,7 +113,7 @@ const RfqDetails = () => {
   // Async function to delete the RFQ
   const deleteRfq = async () => {
     const token = parseCookies().token; // Read the cookies
-    await axios.delete(`http://localhost:5000/rfq/${id}`, {
+    await axios.delete(`${process.env.NEXT_PUBLIC_BACKEND_URL}/rfq/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     router.push("/outstandingrfqs"); // redirect to outstanding RFQs after deletion
