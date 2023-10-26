@@ -41,12 +41,16 @@ app.use(cookieParser());
 // Use body-parser middleware to parse request bodies
 app.use(express.json());
 // Use cors middleware to allow cross-origin requests and credentials (cookies)
+const isProduction = process.env.NODE_ENV === 'production';
+const origin = isProduction ? 'https://rfq-app.vercel.app' : 'http://localhost:3000';
+
 app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
+    cors({
+      origin: origin,
+      credentials: true,
+    })
 );
+
 
 // Establish a second connection to the MongoDB database
 mongoose.connect(process.env.MONGODB_URI, {
