@@ -4,6 +4,9 @@ import Navbar from "../components/Navbar"; // Navbar component for the applicati
 import { AuthWrapper } from "../contexts/AuthContext"; // AuthWrapper context to provide authentication state and functions throughout the app
 import Head from "next/head"; // Used to update the head section of the web page
 
+global.performance = global.performance || {
+    now: () => new Date().getTime(),
+};
 function MyApp({ Component, pageProps, user }) {
   return (
     // AuthWrapper is a context provider for authentication
