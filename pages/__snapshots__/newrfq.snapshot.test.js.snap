@@ -1,0 +1,139 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div>
+  <h2>
+    Create New RFQ
+  </h2>
+  <form
+    onSubmit={[Function]}
+  >
+    <div>
+      <label
+        htmlFor="rfqName"
+      >
+        RFQ Name:
+      </label>
+      <input
+        id="rfqName"
+        onChange={[Function]}
+        required={true}
+        type="text"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        htmlFor="contractStartDate"
+      >
+        Contract Start Date:
+      </label>
+      <input
+        id="contractStartDate"
+        onChange={[Function]}
+        required={true}
+        type="date"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        htmlFor="about"
+      >
+        About:
+      </label>
+      <textarea
+        id="about"
+        onChange={[Function]}
+        required={true}
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        htmlFor="annualVolume"
+      >
+        Annual Volume:
+      </label>
+      <input
+        id="annualVolume"
+        onChange={[Function]}
+        required={true}
+        type="number"
+        value=""
+      />
+    </div>
+    <div>
+      <label
+        htmlFor="contractLength"
+      >
+        Contract Length:
+      </label>
+      <input
+        id="contractLength"
+        onChange={[Function]}
+        required={true}
+        type="number"
+        value=""
+      />
+    </div>
+    <button
+      type="submit"
+    >
+      Release RFQ
+    </button>
+    <button
+      onClick={[Function]}
+      type="button"
+    >
+      Clear Template
+    </button>
+  </form>
+  <p />
+  <style
+    jsx={true}
+  >
+    
+        label {
+          display: block;
+          margin-bottom: 5px;
+        }
+        input,
+        textarea,
+        button {
+          font-family: "Roboto", sans-serif;
+          border-radius: 5px;
+          border: none;
+          padding: 10px;
+          margin-bottom: 20px;
+        }
+        input,
+        textarea {
+          width: 100%;
+          background-color: #333;
+          color: #fff;
+        }
+        textarea {
+          height: 100px;
+        }
+        button {
+          color: #fff;
+          background-color: #007bff;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          font-size: 18px;
+          margin-right: 20px;
+        }
+        button:hover {
+          background-color: #0056b3;
+        }
+        button[type="button"] {
+          background-color: #333;
+        }
+        button[type="button"]:hover {
+          background-color: #1a1a1a;
+        }
+      
+  </style>
+</div>
+`;
