@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "concurrently \"next start\" \"nodemon server.js\"",
+    "startfrontend": "next start",
+    "startbackend": "node server.js",
     "lint": "next lint",
     "test": "cross-env NODE_ENV=test jest"
   },
