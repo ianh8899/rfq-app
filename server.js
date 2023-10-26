@@ -8,6 +8,7 @@ const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 const http = require("http");
 const cookieParser = require("cookie-parser");
+const { performance } = require('perf_hooks');
 
 // Import route handlers
 const userRoutes = require("./routes/userRoutes");
