@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "./node_modules/.bin/next build",
     "start": "concurrently \"next start\" \"nodemon server.js\"",
     "lint": "next lint",
     "test": "cross-env NODE_ENV=test jest"
